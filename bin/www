@@ -1,0 +1,82 @@
+#!/usr/bin/env node
+var debug = require('debug')('nodeexpress');
+var https = require('https');
+var app = require('../app');
+var fs = require('fs');
+var xlsx = require('../Utils/xlsx');
+
+app.set('http_port', process.env.PORT || /*80*/82);
+app.set('https_port', process.env.PORT || /*443*/444);
+
+var options = {
+  key: fs.readFileSync('./cert/key.pem', 'utf8'),
+  cert: fs.readFileSync('./cert/server.crt', 'utf8')
+};
+
+var httpsServer;
+httpsServer = https.createServer(options, app).listen(app.get('https_port'), function() {
+  debug('Express server listening on port ' + httpsServer.address().port);
+});/**/
+
+var server = app.listen(app.get('http_port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+/**/
+
+var io = require('socket.io').listen(8081);
+
+io.sockets.on('connection', function (socket) {
+  socket.on('getXls', function (data, callback) {
+    var now = new Date();
+    var ticks = ((now.getTime() * 10000) + 621355968000000000); //http://stackoverflow.com/questions/7966559/how-to-convert-javascript-date-object-to-ticks
+    var filename = data.prename.toLocaleLowerCase()
+        .replace(/а/g, 'A')
+        .replace(/б/g, 'B')
+        .replace(/в/g, 'V')
+        .replace(/г/g, 'G')
+        .replace(/д/g, 'D')
+        .replace(/е/g, 'E')
+        .replace(/ё/g, 'YO')
+        .replace(/ж/g, 'ZH')
+        .replace(/з/g, 'Z')
+        .replace(/и/g, 'I')
+        .replace(/й/g, 'Y')
+        .replace(/к/g, 'K')
+        .replace(/л/g, 'L')
+        .replace(/м/g, 'M')
+        .replace(/н/g, 'N')
+        .replace(/о/g, 'O')
+        .replace(/п/g, 'P')
+        .replace(/р/g, 'R')
+        .replace(/с/g, 'S')
+        .replace(/т/g, 'T')
+        .replace(/у/g, 'U')
+        .replace(/ф/g, 'F')
+        .replace(/х/g, 'KH')
+        .replace(/ц/g, 'TS')
+        .replace(/ч/g, 'CH')
+        .replace(/ш/g, 'SH')
+        .replace(/щ/g, 'SCH')
+        .replace(/ъ/g, '\'')
+        .replace(/ы/g, 'Y')
+        .replace(/ь/g, '\'')
+        .replace(/э/g, 'E')
+        .replace(/ю/g, 'YU')
+        .replace(/я/g, 'YA');
+    filename += '.' + ticks.toString() + '.xlsx';
+    xlsx.createXlsFile(data.datasource, filename, function (url) {
+      callback(url);
+    });
+    /*var child = cp.fork(__dirname + '/../routes/xlsx');
+     child.on('message', function(m) {
+     console.log('received from child' + m);
+     });
+     process.nextTick(function() {
+     child.send('1');
+     console.log('send to child');
+     });*/
+    /*xlsx.getXlsxFile(function (filename) {
+     callback('http://localhost:8081/' + filename);
+     });*/
+  });
+});

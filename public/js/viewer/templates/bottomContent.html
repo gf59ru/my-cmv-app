@@ -1,0 +1,31 @@
+﻿<div id="bottomResultsContent">
+    <span style="display: inline-block">
+	    <img id="queryingGif" alt="Запрос" src="/images/loading.gif" style="display: none"/>
+    </span>
+    <span id="findResultsCount"></span>
+	<span id="exportResultsContainer" style="float: right; display: none">
+		<input type="text" id="exportFileNameInput" data-dojo-type="dijit/form/TextBox">
+		<a class="k-button" href="#" id="exportResultsButton">Экспортировать в MS Excel</a>
+	</span>
+    <!--div style="padding:5px;">
+        <span id="newSearchButtonDiv">
+            <img src="http://geo-1/Resources/images/loading.gif"/>
+        </span>
+    </div-->
+    <br/>
+
+    <div id="findResultsGridContainer">
+        <div data-dojo-type="dijit/layout/TabContainer" style="height: 400px; width: 100%; padding: 0px">
+            <div data-dojo-type="dijit/layout/ContentPane" title="Полная таблица" data-dojo-props="selected:true"
+                 style="padding: 0px">
+                <div id="findResultsGrid"></div>
+            </div>
+            <div data-dojo-type="dijit/layout/ContentPane" title="Итоговая таблица" style="padding: 0px">
+                <div id="findAggregateResultsGrid"></div>
+            </div>
+        </div>
+        <!--button id="exportResults" data-dojo-type="dijit/form/Button" data-dojo-props="showLabel:true">
+            Экспорт в Excel
+        </button-->
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="gis_FindBlocksDijit">
+    <script type="text/x-kendo-template" id="template">
+        <div class="toolbar">
+            <a id="addCoordRowButton" class="k-button k-button-icontext k-grid-add">
+                <span class="k-icon k-add"/>
+                Добавить
+            </a>
+            <a id="deleteCoordRowButton" class="k-button k-button-icontext k-grid-delete">
+                <span class="k-icon k-delete"/>
+                Удалить
+            </a>
+        </div>
+    </script>
+    <div class="formContainer">
+        <div style="padding:5px;">
+            <label for="distanceTextBox">Дистанция буфера для расчёта запасов, м</label>
+            <input name="distanceTextBox" type="text"
+                   id="distanceTextBox"
+                   data-dojo-attach-event="onChange:distanceChanged"
+                   data-dojo-type="dijit/form/NumberTextBox"
+                   data-dojo-props="trim:true, propercase:true"/>
+            <div>
+                <div style="padding:5px;">
+                    <table>
+                        <tr>
+                            <td>
+                                <input data-dojo-type="dijit/form/ComboBox" data-dojo-props="name:'selectInputType',required:true,searchAttr:'name',maxHeight:250,'class':'identifySelect','readonly':'true'"
+                                       data-dojo-attach-point="selectInputTypeDijit">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="inputPolygonButton" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'polyIcon',showLabel:true,disabled:'true'"
+                                        data-dojo-attach-event="onClick:inputPolygon"
+                                        data-dojo-attach-point="inputPolygonDigit">
+                                    Выберите способ рисования полигона
+                                </button>
+                            </td>
+                        </tr>
+                        <!--tr>
+                            <td>
+                                <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'polyIcon',showLabel:true"
+                                        data-dojo-attach-event="onClick:drawPolygon">
+                                    Задать многоугольник по углам
+                                </button>
+                                <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'freehandDrawIcon',showLabel:true"
+                                        data-dojo-attach-event="onClick:drawFreehandPolygon">
+                                    Нарисовать многоугольник от руки
+                                </button>
+                            </td>
+                        </tr-->
+                    </table>
+                </div>
+            </div>
+            <div class="buttonActionBar">
+                <button data-dojo-type="dijit/form/Button" data-dojo-props="iconClass:'clearIcon',showLabel:true"
+                        data-dojo-attach-event="onClick:clearGraphics">
+                    Очистить
+                </button>
+            </div>
+            <div id="manualPolygonVerticeCoordinatesContainer" style="display: none">
+                <div id="loadCoordinatesContainer" style="display: none; margin-top: 2px; margin-bottom: 4px">
+                    <span>Загрузить файл геометрии (csv)</span>
+                    <input type="file" id="loadCoordFile"/>
+                </div>
+                <div id="manualPolygonVerticeCoordinatesGrid"/>
+            </div>
+            <div data-dojo-attach-point="findResultsNode" class="resultsContainer"></div>
+            <div data-dojo-attach-point="findResultsGrid" class="resultsGrid"></div>
+        </div>
+    </div>
+</div>

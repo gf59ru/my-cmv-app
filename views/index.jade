@@ -1,0 +1,28 @@
+extends layout
+
+
+block content
+  div #(htm)
+  h1= title
+  p Welcome to #{title}
+  p it will be #{title2}
+  div
+    div User name
+    input(
+      type='textbox',
+      name='username'
+    )
+    div Password
+    input(
+      type='password',
+      name='password'
+    )
+    div Domain
+    input(
+      type='textbox',
+      name='domain'
+    )
+  input(
+    type='submit',
+    value='Log in'
+  )

@@ -1,0 +1,97 @@
+.gis_FindBlocksDijit {
+}
+
+.gis_FindBlocksDijit .outerList>li {
+    margin-bottom: 1em;
+}
+.gis_FindBlocksDijit .list-unstyled {
+    padding-left: 0px;
+    list-style-type: none;
+    list-style-position: outside;
+    list-style-image: none;
+}
+
+.gis_FindBlocksDijit .list-inline {
+    padding-left: 0px;
+    margin-left: -5px;
+    list-style-type: none;
+    list-style-position: outside;
+    list-style-image: none;
+}
+
+.gis_FindBlocksDijit .list-inline > li {
+    display: inline-block;
+}
+
+.gis_FindBlocksDijit .drawButton {
+    width: 50px;
+}
+
+.gis_FindBlocksDijit .stopIcon {
+    color: red;
+}
+
+.gis_FindBlocksDijit .drawButton .dijitButtonText {
+    /*display: none;*/
+}
+.gis_FindBlocksDijit .polyIcon {
+    background-image: url(../images/toolbar_icons.png);
+    background-position: -68px 0;
+    width: 16px;
+    height: 16px;
+}
+
+.gis_FindBlocksDijit .pointIcon {
+    background-image: url(../images/toolbar_icons.png);
+    background-position: 0px 0;
+    width: 16px;
+    height: 16px;
+}
+
+.gis_FindBlocksDijit .circleDrawIcon {
+    background-image: url(../images/toolbar_icons.png);
+    background-position: -390px 0;
+    width: 16px;
+    height: 16px;
+}
+
+.gis_FindBlocksDijit .lineIcon {
+    background-image: url(../images/toolbar_icons.png);
+    background-position: -34px 0;
+    width: 16px;
+    height: 16px;
+}
+
+.gis_FindBlocksDijit .freehandDrawIcon {
+    background-image: url(../images/toolbar_icons.png);
+    background-position: -102px 0;
+    width: 16px;
+    height: 16px;
+}
+
+.gis_FindBlocksDijit .freehandPolygonDrawIcon {
+    background-image: url(../images/toolbar_icons_2.png);
+    background-position: -473px 0;
+    width: 16px;
+    height: 16px;
+}
+
+.gis_FindBlocksDijit .clearIcon {
+    background-image: url(../images/clear.png);
+    width: 16px;
+    height: 16px;
+}
+
+.gis_FindBlocksDijit .formContainer {
+    /*border: 1px solid #bbb;*/
+    margin-bottom: -1px;
+    width: 100%;
+}
+
+.gis_FindBlocksDijit .buttonActionBar {
+    /*background-color: #F2F2F2;
+    border: 1px solid #CDCDCD;*/
+    padding: 3px 0px 2px 0px;
+    text-align: right;
+    width: 100%;
+}
